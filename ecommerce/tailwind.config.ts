@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,12 +9,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        bodyFont: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
-    },
+      colors: {
+        bodyColor: '#fbfaf7',
+        bgLight: '#1010100d',
+        darkText: '#242424',
+        lightText: '#a5a5a5',
+      },
+      backgroundImage: {
+        'main-bg': "url('/bg-img.jpeg')"
+      }
+    }
   },
   plugins: [],
 };
