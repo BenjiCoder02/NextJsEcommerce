@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react';
 import { Container } from './Container';
 import { Logo } from './Logo';
 import { BsCart } from "react-icons/bs";
 import { FaSearch } from 'react-icons/fa';
 import { AiOutlineUser } from 'react-icons/ai';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export const Header = () => {
   return (
@@ -18,7 +21,7 @@ export const Header = () => {
             className='placeholder:text-sm flex-1 outline-none'
           />
         </div>
-        <div className='bg-bgLight text-gray-500 flex items-center justify-center p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500 duration-200'>
+        <div onClick={() => signIn()} className='bg-bgLight text-gray-500 flex items-center justify-center p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500 duration-200'>
           <AiOutlineUser className='text-2xl' />
           <p className='text-sm font-semibold'>Login/Register</p>
         </div>
