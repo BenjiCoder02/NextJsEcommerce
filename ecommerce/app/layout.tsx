@@ -3,6 +3,7 @@ import './css/globals.css';
 import { Header } from "./components/Header";
 import { Layout } from "./components/Layout";
 import 'slick-carousel/slick/slick.css';
+import { Footer } from "./components/Footer";
 
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Layout>
           <Header />
           {children}
+          <Footer />
         </Layout>
       </body>
     </html>
