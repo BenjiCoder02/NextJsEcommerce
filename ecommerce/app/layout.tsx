@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import './css/globals.css';
 import { Header } from "./components/Header";
+import { Layout } from "./components/Layout";
+import 'slick-carousel/slick/slick.css';
 
 
 export const metadata: Metadata = {
@@ -16,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-bodyFont w-full bg-main-bg text-darkText">
-        <Header />
+        <Layout>
+          <Header />
+          {children}
+        </Layout>
       </body>
     </html>
   );
