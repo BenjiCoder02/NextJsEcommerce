@@ -13,7 +13,7 @@ export const Footer = () => {
         <div className="flex flex-col gap-y-4">
           <Logo />
           <p>
-            Brandify is a dynamic e-commerce clothing brand that blends style, quality, and affordability. Our mission is to empower individuals to express their unique identities through fashion. At Brandify, we believe that clothing is more than just fabric; it's a statement of who you are.
+            Brandify is a dynamic e-commerce clothing brand that blends style, quality, and affordability.
             Shopping with Brandify is a seamless experience, thanks to our user-friendly website, easy navigation, and secure payment options. With fast shipping and hassle-free returns, we aim to make fashion accessible and enjoyable.
           </p>
           <div className="flex items-center gap-x-4">
