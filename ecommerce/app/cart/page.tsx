@@ -7,6 +7,7 @@ import CartItem from "@/components/CartItem";
 import { resetCart } from "@/redux/shoppingSlice";
 
 import Link from "next/link";
+import PaymentForm from "@/components/PaymentForm";
 
 const CartPage = () => {
   const { productData } = useSelector((state: StateProps) => state?.shopping);
@@ -26,7 +27,7 @@ const CartPage = () => {
                 reset cart
               </button>
             </div>
-            {/* Payment Form */}
+            <PaymentForm />
           </div>
         </Container>
       ) : (

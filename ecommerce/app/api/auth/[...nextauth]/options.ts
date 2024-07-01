@@ -29,7 +29,7 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const user = {
-          id: '1001', name: 'Ben', password: 'test1234'
+          id: '1001', name: 'Ben', password: 'test1234', image: 'https://img.freepik.com/free-photo/isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg'
         }
         if (credentials?.username === user.name && credentials?.password === user.password) {
           return user
