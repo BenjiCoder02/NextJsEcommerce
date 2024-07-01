@@ -12,6 +12,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { Products, StateProps } from '../../types';
 import { FormattedPrice } from './FormattedPrice';
+import Link from 'next/link';
 
 export const Header = () => {
   const { data: session } = useSession();
@@ -44,15 +45,17 @@ export const Header = () => {
           <AiOutlineUser className='text-2xl' />
           <p className='text-sm font-semibold'>Login/Register</p>
         </div>}
-        <div className='border-black hover:border-orange-600 duration-200 relative bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5'>
-          <BsCart className='text-2xl' />
-          <p className='text-sm font-semibold'>
-            <FormattedPrice amount={totalAmt ? totalAmt : 0} />
-          </p>
-          <span className='bg-white text-orange-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black'>
-            {productData ? productData?.length : 0}
-          </span>
-        </div>
+        <Link href={'/cart'}>
+          <div className='border-black hover:border-orange-600 duration-200 relative bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5'>
+            <BsCart className='text-2xl' />
+            <p className='text-sm font-semibold'>
+              <FormattedPrice amount={totalAmt ? totalAmt : 0} />
+            </p>
+            <span className='bg-white text-orange-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black'>
+              {productData ? productData?.length : 0}
+            </span>
+          </div>
+        </Link>
         {session?.user?.image && (
           <Image
             className='rounded-full object-cover w-50 h-50'
