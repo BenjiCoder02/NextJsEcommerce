@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './Container';
 import { Logo } from './Logo';
 import { BsCart } from "react-icons/bs";
@@ -9,9 +9,24 @@ import { AiOutlineUser } from 'react-icons/ai';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { FiLogOut } from 'react-icons/fi';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { Products, StateProps } from '../../types';
+import { FormattedPrice } from './FormattedPrice';
 
 export const Header = () => {
   const { data: session } = useSession();
+  const { productData } = useSelector((state: StateProps) => state.shopping);
+
+  const [totalAmt, setTotalAmt] = useState(0);
+
+  useEffect(() => {
+    let amt = 0;
+    productData.map((item: Products) => {
+      amt += item.price * item.quantity;
+      return
+    })
+    setTotalAmt(amt);
+  }, [productData]);
 
   return (
     <div className='bg-bodyColor h-20 sticky top-0 z-50'>
@@ -31,9 +46,11 @@ export const Header = () => {
         </div>}
         <div className='border-black hover:border-orange-600 duration-200 relative bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5'>
           <BsCart className='text-2xl' />
-          <p className='text-sm font-semibold'>$0.00</p>
+          <p className='text-sm font-semibold'>
+            <FormattedPrice amount={totalAmt ? totalAmt : 0} />
+          </p>
           <span className='bg-white text-orange-600 rounded-full text-xs font-semibold absolute -right-2 -top-1 w-5 h-5 flex items-center justify-center shadow-xl shadow-black'>
-            0
+            {productData ? productData?.length : 0}
           </span>
         </div>
         {session?.user?.image && (

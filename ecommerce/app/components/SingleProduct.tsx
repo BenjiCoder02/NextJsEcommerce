@@ -1,13 +1,18 @@
+'use client';
 import React from "react";
 import { Products } from "../../types";
 import Image from "next/image";
 import { FormattedPrice } from "./FormattedPrice";
 import { IoMdCart } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/shoppingSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
 const SingleProduct = ({ product }: Products) => {
+  const dispatch = useDispatch();
   return (
     <div className="grid lg:grid-cols-2 gap-5 bg-white p-4 rounded-lg">
       <div>
@@ -38,7 +43,11 @@ const SingleProduct = ({ product }: Products) => {
         <div
           className="flex items-center cursor-pointer group"
         >
-          <button className="bg-darkText text-slate-100 px-6 py-3 text-sm uppercase flex items-center border-r-[1px] border-r-slate-500">
+          <button
+            onClick={() => dispatch(addToCart(product)) &&
+              toast.success(`${product?.title.substring(0, 15)} added`)
+            }
+            className="bg-darkText text-slate-100 px-6 py-3 text-sm uppercase flex items-center border-r-[1px] border-r-slate-500">
             add to cart
           </button>
           <span className="bg-darkText text-xl text-slate-100 w-12 flex items-center justify-center group-hover:bg-orange-500 duration-200 py-3">
@@ -50,6 +59,7 @@ const SingleProduct = ({ product }: Products) => {
           Add to wishlist
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };
