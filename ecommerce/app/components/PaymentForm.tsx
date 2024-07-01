@@ -41,6 +41,12 @@ const PaymentForm = () => {
           <p className="uppercase font-medium">Total</p>
           <p><FormattedPrice amount={totalAmt + 20} /></p>
         </div>
+        {userInfo ?
+          <button className="bg-black text-slate-100 mt-4 py-3 px-6 hover:bg-orange-950 cursor-pointer duration-200">Proceed to payment</button> :
+          <div className="">
+            <button className="bg-black text-slate-100 mt-4 py-3 px-6 hover:bg-orange-950 cursor-not-allowed duration-200">Proceed to payment</button>
+            <p className="text-base mt-1 text-red-500 font-semibold animate-bounce">Please login to continue</p>
+          </div>}
       </div>
     </div>
   )
