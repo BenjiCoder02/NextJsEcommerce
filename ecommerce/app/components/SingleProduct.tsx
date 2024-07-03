@@ -9,9 +9,12 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/shoppingSlice";
 import toast, { Toaster } from "react-hot-toast";
 
+interface SingleProductProps {
+  product: Products,
+}
 
-
-const SingleProduct = ({ product }: Products) => {
+const SingleProduct = (props: SingleProductProps) => {
+  const { product } = props;
   const dispatch = useDispatch();
   return (
     <div className="grid lg:grid-cols-2 gap-5 bg-white p-4 rounded-lg">
