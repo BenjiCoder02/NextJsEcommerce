@@ -87,7 +87,7 @@ export const Header = () => {
         )}
         {orderData?.order?.length > 0 && session && (
           <Link
-            href={"/order"}
+            href={"/orders"}
             className="headerDiv px-2 gap-x-1 cursor-pointer"
           >
             <BsBookmarks className="text-2xl" />
