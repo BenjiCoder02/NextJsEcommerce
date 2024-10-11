@@ -23,7 +23,6 @@ export const Header = () => {
 
   useEffect(() => {
     if (session) {
-      console.log(session)
       dispatch(
         addUser({
           name: session?.user?.name,
